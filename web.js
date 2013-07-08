@@ -22,7 +22,7 @@ app.get('/', function(request, response) {
 
     response.send('Below is from the buffer');
 
-    response.send(buf.toString());
+    response.send(buf.toString('utf8'));
 
     response.send('Above is from the buffer.');
 
