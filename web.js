@@ -12,7 +12,7 @@ app.get('/', function(request, response) {
 //	response.send(buffer.toString());
 
     buffer = fs.readFileSync('index.html');
-    response.send('Hello World again\n');
+    response.send('Below is from the buffer');
 
     response.send(buffer.toString());
 
