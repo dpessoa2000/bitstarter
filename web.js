@@ -15,9 +15,12 @@ app.get('/', function(request, response) {
 
 //    buffer.write(fs.readFileSync('./index.html','utf8'));
 
-    fs.readFileSync('./index.html', function(err, buf) {
-	if (err) throw err;
-	});
+    response.send('The buffer now is ' + buf.toString('utf8'));
+
+
+//    fs.readFileSync('./index.html', function(err, buf) {
+//	if (err) throw err;
+//	});
 
 
     response.send('Below is from the buffer');
