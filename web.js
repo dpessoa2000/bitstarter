@@ -15,7 +15,7 @@ app.get('/', function(request, response) {
 
 //    buffer.write(fs.readFileSync('./index.html','utf8'));
 
-    response.send('The buffer now is ' + buf.toString('utf8'));
+    response.send('The buffer now is ' + buf.toString('utf8') + '\n');
 
 
 //    fs.readFileSync('./index.html', function(err, buf) {
