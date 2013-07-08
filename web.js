@@ -13,7 +13,7 @@ app.get('/', function(request, response) {
 
 //    buffer = fs.readFileSync('index.html');
 
-    buffer.write(fs.readFileSync('index.html','utf8'));
+    buffer.write(fs.readFileSync('./index.html','utf8'));
 
     response.send('Below is from the buffer');
 
