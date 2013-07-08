@@ -3,7 +3,7 @@ var express = require('express');
 var app = express.createServer(express.logger());
 
 var fs = require('fs');
-var buffer = new Buffer();
+var buf = new Buffer();
 
 app.get('/', function(request, response) {
 //    fs.readFileSync('index.html', function(err, data) {
@@ -15,14 +15,14 @@ app.get('/', function(request, response) {
 
 //    buffer.write(fs.readFileSync('./index.html','utf8'));
 
-    fs.readFileSync('./index.html', function(err, buffer) {
+    fs.readFileSync('./index.html', function(err, buf) {
 	if (err) throw err;
 	});
 
 
     response.send('Below is from the buffer');
 
-    response.send(buffer.toString());
+    response.send(buf.toString());
 
     response.send('Above is from the buffer.');
 
