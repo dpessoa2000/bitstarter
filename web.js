@@ -16,6 +16,8 @@ app.get('/', function(request, response) {
 
     response.send(buffer.toString());
 
+    response.send('Above is from the buffer.');
+
 
 });
 
