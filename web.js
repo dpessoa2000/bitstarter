@@ -2,7 +2,8 @@ var express = require('express');
 
 var app = express.createServer(express.logger());
 
-var buffer = new Buffer("I'm a string!", "utf-8")
+var fs = require('fs');
+var buffer = new Buffer("I'm a string!", "utf-8");
 
 app.get('/', function(request, response) {
 //    fs.readFileSync('index.html', function(err, data) {
