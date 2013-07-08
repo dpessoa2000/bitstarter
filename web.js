@@ -14,7 +14,7 @@ app.get('/', function(request, response) {
     buffer = fs.readFileSync('index.html');
     response.send('Hello World again\n');
 
-    response.send(buffer.toString);
+    response.send(buffer.toString());
 
 
 });
