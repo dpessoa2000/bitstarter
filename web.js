@@ -10,6 +10,7 @@ app.get('/', function(request, response) {
 //	buffer = data
 //	response.send(buffer.toString());
 
+    buffer = fs.readFileSync('index.html');
     response.send('Hello World again');
 
 
