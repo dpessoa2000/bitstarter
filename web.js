@@ -18,17 +18,20 @@ app.get('/', function(request, response) {
 //    response.send('The buffer now is ' + buf.toString('utf8') + '\n');
 
 
-    fs.readFileSync('/index.html', function(err, buf) {
-	if (err) throw err;
-	response.send(buf.toString('utf-8');
-	});
+//    fs.readFileSync('/index.html', function(err, buf) {
+//	if (err) throw err;
+//	response.send(buf.toString('utf-8');
+//	});
+
+    buf = fs.readFileSync('/index.html');
+    response.send(buf.toString('utf-8'));
 
 
 //    response.send('Below is from the buffer');
 
-    response.send(buf.toString('utf-8'));
+//    response.send(buf.toString('utf-8'));
 
-    response.send('Above is from the buffer.');
+//    response.send('Above is from the buffer.');
 
 
 });
