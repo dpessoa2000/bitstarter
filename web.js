@@ -3,7 +3,7 @@ var express = require('express');
 var app = express.createServer(express.logger());
 
 var fs = require('fs');
-var buf = new Buffer("I'm a string", "utf8");
+var buf = new Buffer("hello world from index.html", "utf-8");
 
 app.get('/', function(request, response) {
 //    fs.readFileSync('index.html', function(err, data) {
@@ -25,7 +25,7 @@ app.get('/', function(request, response) {
 
 //    response.send('Below is from the buffer');
 
-    response.send(buf.toString('utf8'));
+    response.send(buf.toString('utf-8'));
 
     response.send('Above is from the buffer.');
 
