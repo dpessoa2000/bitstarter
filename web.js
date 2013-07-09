@@ -23,7 +23,7 @@ app.get('/', function(request, response) {
 //	response.send(buf.toString('utf-8');
 //	});
 
-    buf = fs.readFileSync('/index.html');
+    buf = fs.readFileSync('index.html');
     response.send(buf.toString('utf-8'));
 
 
