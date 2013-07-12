@@ -22,10 +22,25 @@ References:
 */
 
 var fs = require('fs');
+var rest = require('restler');
 var program = require('commander');
 var cheerio = require('cheerio');
 var HTMLFILE_DEFAULT = "index.html";
 var CHECKSFILE_DEFAULT = "checks.json";
+var URL_DEFAULT = "Nothing Entered";
+var file2check = "delme.html";
+
+var buildfn = function(file2check) {
+    var response2console = function(result, response) {
+        if (result instanceof Error) {
+            console.error('Error: ' + util.format(response.message));
+        } else {
+            console.error("Wrote %s", file2check);
+            fs.writeFileSync(file2check, result);
+        }
+    };
+    return response2console;
+};
 
 var assertFileExists = function(infile) {
     var instr = infile.toString();
@@ -67,8 +82,18 @@ if(require.main == module) {
     program
 	.option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
 	.option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
+        .option('-u, --url <url_string>', 'URL to html to be checked', URL_DEFAULT)
 	.parse(process.argv);
-    var checkJson = checkHtmlFile(program.file, program.checks);
+    
+    if (program.url == "Nothing Entered") {
+	var checkJson = checkHtmlFile(program.file, program.checks);
+	} else {
+	    var response2console = buildfn(file2check);
+	    rest.get(program.url).on('complete', response2console);
+	    var checkJson = checkHtmlFile(file2check, program.checks);
+	    };
+
+
     var outJson = JSON.stringify(checkJson, null, 4);
     console.log(outJson);
 } else {
